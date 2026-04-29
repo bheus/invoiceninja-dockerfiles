@@ -5,7 +5,7 @@ services:
     image: invoiceninja/invoiceninja-debian:${TAG:-latest}
     restart: unless-stopped
     env_file:
-      - ./.env
+      - ./stack.env
     volumes:
       # - ./php/php.ini:/usr/local/etc/php/conf.d/invoiceninja.ini:ro
       # - ./php/php-fpm.conf:/usr/local/etc/php-fpm.d/invoiceninja.conf:ro
