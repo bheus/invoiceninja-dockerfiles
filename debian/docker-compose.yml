@@ -19,12 +19,15 @@ services:
         condition: service_healthy
 
   nginx:
-    image: nginx:alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    image: invoiceninja/invoiceninja-nginx:${TAG:-latest}
     restart: unless-stopped
     ports:
       - "8012:80"
     volumes:
-      - /home/bheussler/invoiceninja-nginx:/etc/nginx/conf.d:ro
+      # only the app data volumes — no more bind mount for configs
       - app_public:/var/www/html/public:ro
       - app_storage:/var/www/html/storage:ro
     depends_on:
