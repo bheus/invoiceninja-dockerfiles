@@ -2,7 +2,8 @@ services:
   app:
     build:
       context: .
-    image: invoiceninja/invoiceninja-debian:${TAG:-latest}
+    image: invoiceninja-debian:${TAG:-local}
+    pull_policy: build
     restart: unless-stopped
     env_file:
       - ../stack.env
@@ -22,7 +23,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.nginx
-    image: invoiceninja/invoiceninja-nginx:${TAG:-latest}
+    image: invoiceninja-nginx:${TAG:-local}
+    pull_policy: build
     restart: unless-stopped
     ports:
       - "8012:80"
