@@ -12,3 +12,10 @@ charts/**/charts/
 
 # Compose filesystem
 /docker
+
+# Local deployment secrets
+.env
+.env.*
+!.env.example
+stack.env
+debian/.env
